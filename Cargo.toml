@@ -1,5 +1,5 @@
 [package]
-name = "pluralsight-skills-workspace-guided-text-based-adventure-game-in-rust"
+name = "adventure-game"
 version = "0.1.0"
 edition = "2021"
 
