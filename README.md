@@ -1,6 +1,8 @@
 # pluralsight-skills-workspace-guided-text-based-adventure-game-in-rust
 Pluralsight Skills Workspace Guided Text-based Adventure Game in Rust
 
+[![actionlint](https://github.com/vpayno/pluralsight-skills-workspace-guided-text-based-adventure-game-in-rust/actions/workflows/gh-actions.yml/badge.svg?branch=main)](https://github.com/vpayno/pluralsight-skills-workspace-guided-text-based-adventure-game-in-rust/actions/workflows/gh-actions.yml)
+
 ## Repo Introduction
 
 Instead of using the web lab I'm working on this locally with Vim.
