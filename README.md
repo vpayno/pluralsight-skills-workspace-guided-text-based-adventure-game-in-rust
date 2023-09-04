@@ -26,6 +26,10 @@ Note: You may notice that when completing tasks for earlier modules(ie. modules 
     3. [x] Task `rest_health()`
     4. [x] Task `player_attack()`
 
+2. Step `mobs.rs`
+
+    1. [ ] Task `mob_attack()`
+
 ### Step 1: Implementing the Player
 
 The first incomplete component is the Player. The Player module is located within `player.rs`, which has a `Player` struct already defined.
@@ -158,3 +162,42 @@ if attack is critical hit, print critical hit message. Else print normal damage 
 After completing all the aforementioned tasks, the `Player` module is now complete.
 Now the player is able to successfully pick their class at the start of the app, level up when reaching the correct amount of exp to grow stronger, rest to recover health, and simulate an attack against enemies.
 Next, we will move on the to `Mob` module.
+
+### Step 2: Implementing the Mobs
+
+The `Mob` module contains all the data regarding the monsters you will encounter in this game.
+It is very similar to the `Player` module as it has a Mob struct with multiple spawning functions for mobs with their own distinct values.
+The only function that you will need to complete is the `mob_attack()` function to simulate combat against the player.
+
+#### Task 1: `mobs.rs`
+
+Within `mobs.rs`, locate the `mob_attack()` function at the bottom.
+It works similarly to `player_attack()` from the previous module, except mobs cannot critically hit the player.
+Complete the implementation with the accompanying instructions.
+
+##### `mob_attack()` Instructions
+
+```rust
+check if player dodge rolled successfully
+
+if player didnt dodge
+    calculate base damage similar to the previous task
+    let mut total_damage = 1 #Minimum damage a mob does to a player is 1
+
+    if self.dmg_ismagic
+        calculate total damage as base damage - player.resistance or 1
+    else
+        calculate total damage as base damage - player.armor or 1
+
+    subtract total damage from player.health
+
+    print damage done to player
+
+else
+    print dodge message #no damage should have been done to player
+```
+
+##### `mob_attack()` Hint #1
+
+After completing the aforementioned task, the `Mob` module is complete.
+Now, both the `Player` and `Mob` can engage in combat by attacking each other.
