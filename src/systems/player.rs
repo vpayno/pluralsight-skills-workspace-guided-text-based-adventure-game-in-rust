@@ -98,15 +98,19 @@ impl Player {
     }
 
     pub fn pick_class(selected_class: i32) -> Player {
-        let player;
+        let player: Player = if selected_class == 1 {
+            println!("\nYou selected the Warrior class.");
+            Player::spawn_warrior()
+        } else if selected_class == 2 {
+            println!("\nYou selected the Wizard class.");
+            Player::spawn_wizard()
+        } else {
+            println!("\nYou selected the Ranger class.");
+            Player::spawn_ranger()
+        };
 
-        //println!("\nYou selected the Warrior class.");
-        
-        //println!("\nYou selected the Wizard class.");
-
-        //println!("\nYou selected the Ranger class.");
-        
-        player.expect("No player class was selected.")    
+        // player.expect("No player class was selected.")
+        player
     }
 
     pub fn level_up(&mut self) {
