@@ -209,15 +209,29 @@ impl Player {
         }
     }
 
-    pub fn player_attack(&self, mob: &mut Mob, rng: &mut ThreadRng) { 
-      
-      //let total_damage: i32;
+    pub fn player_attack(&self, mob: &mut Mob, rng: &mut ThreadRng) {
+        let mut base_dmg = rng.gen_range(self.min_damage..=self.max_damage);
+        let total_damage: i32;
 
-      //println!("Critical Hit! You did {} damage to {}\n", total_damage, mob.name);
+        if base_dmg <= self.crit_chance {
+            base_dmg *= 2;
+        }
 
-      //println!("You did {} damage to {}\n", total_damage, mob.name);
+        if self.dmg_ismagic {
+            total_damage = (base_dmg - mob.resistance).max(1);
+        } else {
+            total_damage = (base_dmg - mob.armor).max(1);
+        }
 
+        mob.current_health -= total_damage;
+
+        if base_dmg <= self.crit_chance {
+            println!(
+                "Critical Hit! You did {} damage to {}\n",
+                total_damage, mob.name
+            );
+        } else {
+            println!("You did {} damage to {}\n", total_damage, mob.name);
+        }
     }
-
 }
-
