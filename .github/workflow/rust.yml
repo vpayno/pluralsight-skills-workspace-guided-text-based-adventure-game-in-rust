@@ -1,0 +1,119 @@
+---
+name: rust
+
+"on":
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  rust:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+      actions: read  # only required for a private repository by github/codeql-action/upload-sarif to get the Action run status
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v3
+      - name: Install LLVM and Clang
+        uses: KyleMayes/install-llvm-action@v1
+        with:
+          version: "16"
+      - name: Install Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: default  # https://rust-lang.github.io/rustup/concepts/profiles.html
+          toolchain: stable
+          components: clippy, llvm-tools-preview, rust-docs, rustfmt  # https://rust-lang.github.io/rustup/concepts/components.html
+          override: true
+      - name: Rust Version
+        run: |-
+          {
+            printf "\`\`\`text\n"
+            rustc --version
+            printf "\`\`\`\n"
+          } |& tee -a "${GITHUB_STEP_SUMMARY}"
+      - name: Install sccache
+        run: cargo install sccache
+      - name: Install required cargo
+        env:
+          RUSTC_WRAPPER: "sccache"
+        run: cargo install clippy-sarif sarif-fmt cargo-llvm-cov
+      - name: Cargo Clippy - sarif upload
+        env:
+          RUSTC_WRAPPER: "sccache"
+        run: cargo clippy --all-features --message-format=json | clippy-sarif | tee rust-clippy-results.sarif | sarif-fmt
+      - name: Upload analysis results to GitHub
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: rust-clippy-results.sarif
+          wait-for-processing: true
+      - name: Cargo Clippy
+        env:
+          RUSTC_WRAPPER: "sccache"
+        run: |-
+          {
+            printf "\`\`\`text\n"
+            cargo clippy --all-features || true
+            printf "\`\`\`\n"
+          } |& tee -a "${GITHUB_STEP_SUMMARY}"
+      - name: Cargo Check
+        env:
+          RUSTC_WRAPPER: "sccache"
+        run: |-
+          {
+            printf "\`\`\`text\n"
+            cargo check --verbose || true
+            printf "\`\`\`\n"
+          } |& tee -a "${GITHUB_STEP_SUMMARY}"
+      - name: Cargo Tests
+        env:
+          RUSTC_WRAPPER: "sccache"
+        run: |-
+          {
+            printf "\`\`\`text\n"
+            cargo test --verbose
+            printf "\`\`\`\n"
+          } |& tee -a "${GITHUB_STEP_SUMMARY}"
+      - name: Cargo Coverage
+        env:
+          RUSTC_WRAPPER: "sccache"
+        run: |-
+          cargo llvm-cov clean --workspace
+          cargo build
+          {
+            printf "\`\`\`text\n"
+            cargo llvm-cov run
+            printf "\`\`\`\n"
+          } |& tee -a "${GITHUB_STEP_SUMMARY}"
+          {
+            printf "\`\`\`text\n"
+            cargo llvm-cov --no-clean
+            printf "\`\`\`\n"
+          } |& tee -a "${GITHUB_STEP_SUMMARY}"
+          {
+            printf "\`\`\`text\n"
+            cargo llvm-cov report --lcov
+            printf "\`\`\`\n"
+          } |& tee -a "${GITHUB_STEP_SUMMARY}"
+          {
+            printf "\`\`\`text\n"
+            lcov --list lcov.info
+            printf "\n"
+            lcov --summary lcov.info
+            printf "\`\`\`\n"
+          } |& tee -a "${GITHUB_STEP_SUMMARY}"
+      - name: Cargo build
+        env:
+          RUSTC_WRAPPER: "sccache"
+        run: cargo build --verbose
