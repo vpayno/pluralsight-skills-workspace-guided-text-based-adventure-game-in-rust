@@ -190,13 +190,23 @@ impl Player {
     }
 
     pub fn rest_health(&mut self) {
+        if self.rests >= 1 {
+            let half_hp = self.max_health / 2;
+            if self.current_health <= half_hp {
+                self.current_health += half_hp
+            } else {
+                self.current_health = self.max_health;
+            }
+            self.rests -= 1;
 
-      
-      println!("\nYou used a rest. Your health is now {} / {}.", self.current_health, self.max_health);
-      println!("Remaining rests: {}", self.rests)
-
-      println!("\nYou don't have anymore rests to use!");
-  
+            println!(
+                "\nYou used a rest. Your health is now {} / {}.",
+                self.current_health, self.max_health
+            );
+            println!("Remaining rests: {}", self.rests);
+        } else {
+            println!("\nYou don't have anymore rests to use!");
+        }
     }
 
     pub fn player_attack(&self, mob: &mut Mob, rng: &mut ThreadRng) { 
