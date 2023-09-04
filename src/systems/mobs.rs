@@ -10,7 +10,7 @@ pub struct Mob {
     pub resistance: i32,
     pub min_damage: i32,
     pub max_damage: i32,
-    pub dmg_ismagic: bool
+    pub dmg_ismagic: bool,
 }
 
 impl Mob {
@@ -24,7 +24,7 @@ impl Mob {
             resistance: 1,
             min_damage: 3,
             max_damage: 4,
-            dmg_ismagic: false
+            dmg_ismagic: false,
         }
     }
 
@@ -38,7 +38,7 @@ impl Mob {
             resistance: 3,
             min_damage: 5,
             max_damage: 9,
-            dmg_ismagic: false
+            dmg_ismagic: false,
         }
     }
 
@@ -52,7 +52,7 @@ impl Mob {
             resistance: 2,
             min_damage: 3,
             max_damage: 4,
-            dmg_ismagic: true
+            dmg_ismagic: true,
         }
     }
 
@@ -66,7 +66,7 @@ impl Mob {
             resistance: 4,
             min_damage: 6,
             max_damage: 8,
-            dmg_ismagic: true
+            dmg_ismagic: true,
         }
     }
 
@@ -80,7 +80,7 @@ impl Mob {
             resistance: 5,
             min_damage: 9,
             max_damage: 16,
-            dmg_ismagic: false
+            dmg_ismagic: false,
         }
     }
 
@@ -94,16 +94,14 @@ impl Mob {
             resistance: 7,
             min_damage: 10,
             max_damage: 12,
-            dmg_ismagic: true
+            dmg_ismagic: true,
         }
     }
 
     pub fn mob_attack(&self, player: &mut Player, rng: &mut ThreadRng) {
-        
-        
+
         //println!("{} did {} damage to you!\n", self.name, total_damage);
 
         //println!("You dodged the attack!\n");
-
     }
 }

@@ -31,7 +31,7 @@ impl Player {
             max_damage: 6,
             dmg_ismagic: false,
             crit_chance: 15,
-            rests: 1
+            rests: 1,
         }
     }
 
@@ -49,7 +49,7 @@ impl Player {
             max_damage: 5,
             dmg_ismagic: true,
             crit_chance: 15,
-            rests: 1
+            rests: 1,
         }
     }
 
@@ -67,7 +67,7 @@ impl Player {
             max_damage: 4,
             dmg_ismagic: false,
             crit_chance: 20,
-            rests: 1
+            rests: 1,
         }
     }
 
@@ -80,28 +80,21 @@ impl Player {
             stdin().read_line(&mut input).expect("Error reading input.");
 
             class_choice = match input.trim().parse() {
-                Ok(1) => {
-                    1
-                },
-                Ok(2) => {
-                    2
-                },
-                Ok(3) => {
-                    3
-                },
+                Ok(1) => 1,
+                Ok(2) => 2,
+                Ok(3) => 3,
                 Ok(_) => {
                     println!("\nPlease select one of the given options.");
                     continue;
-                },
+                }
                 Err(_) => {
                     println!("\nPlease enter a number.");
-                    continue
+                    continue;
                 }
             }
         }
 
         class_choice
-
     }
 
     pub fn pick_class(selected_class: i32) -> Player {
@@ -156,24 +149,23 @@ impl Player {
     }
 
     pub fn show_stats(&self) {
-
         match self.class {
             1 => {
                 println!("\nClass: Warrior");
-            },
+            }
             2 => {
                 println!("\nClass: Wizard");
-            },
+            }
             3 => {
                 println!("\nClass: Ranger");
-            },
+            }
             _ => {}
         }
 
         println!("Level: {}", self.level);
         println!("Health: {} / {}", self.current_health, self.max_health);
         println!("Rests: {}", self.rests);
-        println!("Current Exp: {} / {}", self.exp, 20*(self.level-1) + 10);
+        println!("Current Exp: {} / {}", self.exp, 20 * (self.level - 1) + 10);
         println!("Armor: {}", self.armor);
         println!("Magic Resistance: {}", self.resistance);
         println!("Dodge Chance: {}%", self.dodge);
