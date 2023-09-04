@@ -115,41 +115,52 @@ impl Player {
 
     pub fn level_up(&mut self) {
         let mut enough_xp = true;
-        //let req_exp = 20*(self.level - 1) + 10;
 
-        //If warrior class, or self.class is 1
-        // self.max_health += 6;
-        // self.current_health = self.max_health;
-        // self.armor += 2;
-        // self.resistance += 1;
-        // self.dodge += 2;
-        // self.min_damage += 1;
-        // self.max_damage += 3;
-        // self.crit_chance += 2;
+        while enough_xp {
+            let req_exp = 20 * (self.level - 1) + 10;
 
-        //If wizard class, or self.class is 2
-        // self.max_health += 4;
-        // self.current_health = self.max_health;
-        // self.armor += 1;
-        // self.resistance += 1;
-        // self.dodge += 3;
-        // self.min_damage += 2;
-        // self.max_damage += 2;
-        // self.crit_chance += 3;
+            if self.exp >= req_exp {
+                self.level += 1;
+                self.exp -= req_exp;
 
-        //If ranger class, or self.class is 3
-        // self.max_health += 5;
-        // self.current_health = self.max_health;
-        // self.armor += 1;
-        // self.resistance += 1;
-        // self.dodge += 4;
-        // self.min_damage += 2;
-        // self.max_damage += 2;
-        // self.crit_chance += 5;
-
-
-        println!("--------\nYou leveled up! You are now level {}", self.level);
-
+                match self.class {
+                    1 => {
+                        self.max_health += 6;
+                        self.current_health = self.max_health;
+                        self.armor += 2;
+                        self.resistance += 1;
+                        self.dodge += 2;
+                        self.min_damage += 1;
+                        self.max_damage += 3;
+                        self.crit_chance += 2;
+                    }
+                    2 => {
+                        self.max_health += 4;
+                        self.current_health = self.max_health;
+                        self.armor += 1;
+                        self.resistance += 1;
+                        self.dodge += 3;
+                        self.min_damage += 2;
+                        self.max_damage += 2;
+                        self.crit_chance += 3;
+                    }
+                    3 => {
+                        self.max_health += 5;
+                        self.current_health = self.max_health;
+                        self.armor += 1;
+                        self.resistance += 1;
+                        self.dodge += 4;
+                        self.min_damage += 2;
+                        self.max_damage += 2;
+                        self.crit_chance += 5;
+                    }
+                    _ => {}
+                };
+                println!("--------\nYou leveled up! You are now level {}", self.level);
+            } else {
+                enough_xp = false;
+            }
+        }
     }
 
     pub fn show_stats(&self) {
