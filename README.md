@@ -28,7 +28,7 @@ Note: You may notice that when completing tasks for earlier modules(ie. modules 
 
 2. Step `mobs.rs`
 
-    1. [ ] Task `mob_attack()`
+    1. [x] Task `mob_attack()`
 
 ### Step 1: Implementing the Player
 

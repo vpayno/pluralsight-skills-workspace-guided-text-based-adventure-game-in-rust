@@ -99,9 +99,20 @@ impl Mob {
     }
 
     pub fn mob_attack(&self, player: &mut Player, rng: &mut ThreadRng) {
+        if player.dodge == 0 {
+            let base_dmg = rng.gen_range(self.min_damage..=self.max_damage);
 
-        //println!("{} did {} damage to you!\n", self.name, total_damage);
+            let total_damage = if self.dmg_ismagic {
+                (base_dmg - player.resistance).max(1)
+            } else {
+                (base_dmg - player.armor).max(1)
+            };
 
-        //println!("You dodged the attack!\n");
+            player.current_health -= total_damage;
+
+            println!("{} did {} damage to you!\n", self.name, total_damage);
+        } else {
+            println!("You dodged the attack!\n");
+        }
     }
 }
