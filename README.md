@@ -41,6 +41,11 @@ This is normal as these warnings are just referencing the later modules you have
     3. [ ] Task `generate_hard_room()`
     4. [ ] Task `generate_boss_room()`
 
+4. Step `game_state.rs`
+
+    1. [ ] Task `player_victor()`
+    2. [ ] Task `proceed_room()`
+
 ### Step 1: Implementing the Player
 
 The first incomplete component is the Player. The Player module is located within `player.rs`, which has a `Player` struct already defined.
@@ -241,3 +246,40 @@ Complete the implementation by spawning mobs in the following order: goblin, orc
 #### Task 4: `generate_boss_room()`
 
 Within `dungeon.rs`, locate the `generate_boss_room()` function. Complete the implementation by spawning in a demon.
+
+### Step 4: Game State
+
+The last module to complete is the `GameState` which stores data on the current progression of the game.
+`player_victory()` and `proceed_room()` are the two functions that you will need to implement here.
+
+#### Task 1: `player_victory()`
+
+Within `game_state.rs,` locate the `player_victory()` function. Complete the implementation with the accompanying instructions.
+
+##### Instructions `player_victory()`
+
+```rust
+print statements
+
+add curr_mob.exp to player.exp
+call player.level_up() #use player parameter, not Player module
+increment mob_index #Dereference pointer
+set self to GameState::AwaitingInput #Dereference pointer
+```
+
+##### Hint #1 `player_victory()`
+
+#### Task 2 `proceed_room()`
+
+Within `game_state.rs,` locate the `proceed_room()` function. Complete the implementation with the accompanying instructions.
+
+##### Instructions `proceed_room()`
+
+```rust
+increment room_number #Derefence pointer
+increment player.rests #No need to dereference
+set mob_index to 0 #Dereference pointer
+set self to GameState::AwaitingInput #Dereference pointer
+```
+
+With these tasks completed, the app should be fully functional. Great job!
