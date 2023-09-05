@@ -1,0 +1,53 @@
+---
+#
+# .gitlab-ci.yml
+#
+stages:
+  - test
+  - build
+  - publish
+
+workflow:
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main" || ($CI_PIPELINE_SOURCE == 'merge_request_event' && ( $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" || $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "master" ))
+
+tests:
+  stage: test
+  image: rust
+  allow_failure: true
+  script:
+    - cargo test
+
+build:amd64:
+  stage: build
+  image: rust
+  script:
+    - cargo build --release
+  artifacts:
+    paths:
+      - target/release/adventure-game
+
+rustdoc:
+  stage: build
+  image: rust
+  script:
+    - cargo doc
+  artifacts:
+    paths:
+      - target/doc
+
+pages:
+  stage: publish
+  image: alpine
+  dependencies:
+    - build:amd64
+    - rustdoc
+  script:
+    - mkdir -pv public
+    - mv -v target/doc public/doc
+    - mv -v target/release/rust-gitlab-example
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
