@@ -211,17 +211,16 @@ impl Player {
 
     pub fn player_attack(&self, mob: &mut Mob, rng: &mut ThreadRng) {
         let mut base_dmg = rng.gen_range(self.min_damage..=self.max_damage);
-        let total_damage: i32;
 
         if base_dmg <= self.crit_chance {
             base_dmg *= 2;
         }
 
-        if self.dmg_ismagic {
-            total_damage = (base_dmg - mob.resistance).max(1);
+        let total_damage: i32 = if self.dmg_ismagic {
+            (base_dmg - mob.resistance).max(1)
         } else {
-            total_damage = (base_dmg - mob.armor).max(1);
-        }
+            (base_dmg - mob.armor).max(1)
+        };
 
         mob.current_health -= total_damage;
 
