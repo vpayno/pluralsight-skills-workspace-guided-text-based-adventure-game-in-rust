@@ -1,4 +1,5 @@
 # pluralsight-skills-workspace-guided-text-based-adventure-game-in-rust
+
 Pluralsight Skills Workspace Guided Text-based Adventure Game in Rust
 
 [![actionlint](https://github.com/vpayno/pluralsight-skills-workspace-guided-text-based-adventure-game-in-rust/actions/workflows/gh-actions.yml/badge.svg?branch=main)](https://github.com/vpayno/pluralsight-skills-workspace-guided-text-based-adventure-game-in-rust/actions/workflows/gh-actions.yml)
@@ -15,7 +16,8 @@ In this lab, you have been given a text-based adventure game application in Rust
 
 The application can be run at any time by executing the `cargo run` command in the terminal or clicking the Run button in the terminal.
 
-Note: You may notice that when completing tasks for earlier modules(ie. modules 1 and 2) the test output may still output warnings. This is normal as these warnings are just referencing the later modules you have not yet completed and will gradually disappear as you progress
+Note: You may notice that when completing tasks for earlier modules(ie. modules 1 and 2) the test output may still output warnings.
+This is normal as these warnings are just referencing the later modules you have not yet completed and will gradually disappear as you progress
 
 ## Steps/Tasks
 
@@ -36,7 +38,8 @@ The first incomplete component is the Player. The Player module is located withi
 There are also multiple spawning functions for each class, each with their own distinct values.
 The `get_class_input()` method is a predefined auxiliary function for reading your input when selecting a class.
 
-You will need to complete the `Player` module by implementing `pick_class()` for selecting your class at the start of the game, `level_up()` for strengthening your character on each level up, `rest_health()` for healing between dungeon rooms, and `player_attack()` to simulate combat.
+You will need to complete the `Player` module by implementing `pick_class()` for selecting your class at the start of the game,
+`level_up()` for strengthening your character on each level up, `rest_health()` for healing between dungeon rooms, and `player_attack()` to simulate combat.
 
 #### Task 1: `player.rs`
 
