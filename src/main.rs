@@ -68,7 +68,7 @@ async fn main() {
 
                 if game_data.mob_index == curr_room.len() {
                     let next_room = dungeon_rooms.next();
-                    if let None = next_room {
+                    if next_room.is_none() {
                         game_data.game_state = GameState::WinGame;
                     } else {
                         curr_room = next_room.unwrap();
