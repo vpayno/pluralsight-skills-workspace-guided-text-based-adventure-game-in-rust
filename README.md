@@ -49,7 +49,7 @@ Within `player.rs`, locate the `pick_class()` function.
 
 Complete the implementation using the accompanying instructions.
 
-##### `pick_class()` Instructions
+##### Instructions `pick_class()`
 
 ```rust
 let player;
@@ -68,25 +68,25 @@ else
 player.expect("No player class was selected.")
 ```
 
-##### `pick_class()` Hint #1
+##### Hint #1 `pick_class()`
 
 Use the `Option` enum in Rust with `Some()` when assigning the player variable.
 
 This is done using `player = Some(input)` which extracts the value of input and assigns it to the `player` if it exists, or `None` if it doesn't.
 
-##### `pick_class()` Hint #2
+##### Hint #2 `pick_class()`
 
 The functions to spawn a class are defined for you at the top of the `Player` module.
 Functions of a module can be called in Rust with the syntax `Module::function()`.
 For example, `Player::spawn_warrior()`.
 
-#### Tesk 2: `level_up()`
+#### Task 2: `level_up()`
 
 Within `player.rs`, locate the `level_up()` function.
 
 Complete the implementation with the accompanying instructions.
 
-##### `level_up()` Instructions
+##### Instructions `level_up()`
 
 ```rust
 let mut enough_xp = true;
@@ -104,7 +104,7 @@ while enough_xp is true
         set enough_xp to false
 ```
 
-##### `level_up()` Hint #1
+##### Hint #1 `level_up()`
 
 When increasing stat values, use a match statement.
 `match` works similar to switch statements from other languages.
@@ -114,12 +114,12 @@ The default case of the `match` statement should be to do nothing in the format
 _  => {}
 ```
 
-#### Tesk 3: `rest_health()`
+#### Task 3: `rest_health()`
 
 Within `player.rs`, locate the `rest_health()` function.
 Complete the implementation with the accompanying instructions.
 
-##### `rest_health()` Instructions
+##### Instructions `rest_health()`
 
 ```rust
 if self.rests >= 1
@@ -134,16 +134,16 @@ else
  print no more rests message
 ```
 
-##### `rest_health()` Hint #1
+##### Hint #1 `rest_health()`
 
 You can use a ternary statement when setting `self.current_health`.
 
-#### Tesk 4: `player_attack()`
+#### Task 4: `player_attack()`
 
 Within `player.rs`, locate the `player_attack()` function.
 Complete the implementation with the accompanying instructions.
 
-##### `rest_player_attack()` Instructions
+##### Instructions `rest_player_attack()`
 
 ```rust
 let mut base_dmg = rng.gen_range(self.min_damage to self.max_damage)
@@ -162,7 +162,7 @@ subtract total_damage from mob.current_health
 if attack is critical hit, print critical hit message. Else print normal damage message.
 ```
 
-##### `player_attack()` Hint #1
+##### Hint #1 `player_attack()`
 
 After completing all the aforementioned tasks, the `Player` module is now complete.
 Now the player is able to successfully pick their class at the start of the app, level up when reaching the correct amount of exp to grow stronger, rest to recover health, and simulate an attack against enemies.
@@ -174,13 +174,13 @@ The `Mob` module contains all the data regarding the monsters you will encounter
 It is very similar to the `Player` module as it has a Mob struct with multiple spawning functions for mobs with their own distinct values.
 The only function that you will need to complete is the `mob_attack()` function to simulate combat against the player.
 
-#### Task 1: `mobs.rs`
+#### Task 1: `mob_attack()`
 
 Within `mobs.rs`, locate the `mob_attack()` function at the bottom.
 It works similarly to `player_attack()` from the previous module, except mobs cannot critically hit the player.
 Complete the implementation with the accompanying instructions.
 
-##### `mob_attack()` Instructions
+##### Instructions `mob_attack()`
 
 ```rust
 check if player dodge rolled successfully
@@ -202,7 +202,7 @@ else
     print dodge message #no damage should have been done to player
 ```
 
-##### `mob_attack()` Hint #1
+##### Hint #1 `mob_attack()`
 
 After completing the aforementioned task, the `Mob` module is complete.
 Now, both the `Player` and `Mob` can engage in combat by attacking each other.
