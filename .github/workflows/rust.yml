@@ -36,6 +36,8 @@ jobs:
           toolchain: stable
           components: clippy, llvm-tools-preview, rust-docs, rustfmt  # https://rust-lang.github.io/rustup/concepts/components.html
           override: true
+      - name: Install dependencies via apt
+        run: sudo apt install -y lcov
       - name: Rust Version
         run: |-
           {
