@@ -34,6 +34,13 @@ This is normal as these warnings are just referencing the later modules you have
 
     1. [x] Task `mob_attack()`
 
+3. Step `dungeon.rs`
+
+    1. [ ] Task `generate_starter_room()`
+    2. [ ] Task `generate_intermediate_room()`
+    3. [ ] Task `generate_hard_room()`
+    4. [ ] Task `generate_boss_room()`
+
 ### Step 1: Implementing the Player
 
 The first incomplete component is the Player. The Player module is located within `player.rs`, which has a `Player` struct already defined.
@@ -206,3 +213,31 @@ else
 
 After completing the aforementioned task, the `Mob` module is complete.
 Now, both the `Player` and `Mob` can engage in combat by attacking each other.
+
+### Step 3: Dungeon Generation
+
+Now we will need to populate the dungeon with the completed `Mob` creatures.
+It would be a good idea to familiarize yourself with all the mob spawning functions that were already predefined for you in the `Mob` module as they'll be used extensively here.
+
+#### Task 1: `generate_starter_room()`
+
+Within `dungeon.rs`, locate the `generate_starter_room()` function. Complete the implementation by spawning in a goblin followed by a ghost.
+
+##### Hint #1 `generate_starter_room()`
+
+Since the functions to spawn the mobs are in the separate `Mob` module, you will need to spawn them with the `Module::function()` syntax.
+Since `room_mobs` is just a vector, you can simply `push()` the spawned mob into `room_mobs`.
+
+#### Task 2: `generate_intermediate_room()`
+
+Within `dungeon.rs`, locate the `generate_intermediate_room()` function.
+Complete the implementation by spawning in a goblin, a ghost, an orc, and a sorcerer in that order.
+
+#### Task 3: `generate_hard_room()`
+
+Within `dungeon.rs`, locate the `generate_hard_room()` function.
+Complete the implementation by spawning mobs in the following order: goblin, orc, sorcerer, another orc, and a troll.
+
+#### Task 4: `generate_boss_room()`
+
+Within `dungeon.rs`, locate the `generate_boss_room()` function. Complete the implementation by spawning in a demon.
