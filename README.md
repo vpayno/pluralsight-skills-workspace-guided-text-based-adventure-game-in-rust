@@ -6,6 +6,8 @@ Pluralsight Skills Workspace Guided Text-based Adventure Game in Rust
 [![spellcheck](https://github.com/vpayno/pluralsight-skills-workspace-guided-text-based-adventure-game-in-rust/actions/workflows/spellcheck.yml/badge.svg?branch=main)](https://github.com/vpayno/pluralsight-skills-workspace-guided-text-based-adventure-game-in-rust/actions/workflows/spellcheck.yml)
 [![rust](https://github.com/vpayno/pluralsight-skills-workspace-guided-text-based-adventure-game-in-rust/actions/workflows/rust.yml/badge.svg?branch=main)](https://github.com/vpayno/pluralsight-skills-workspace-guided-text-based-adventure-game-in-rust/actions/workflows/rust.yml)
 
+[![gitlab pipline](https://gitlab.com/vpayno/pluralsight-skills-workspace-guided-text-based-adventure-game-in-rust/badges/main/pipeline.svg)](https://gitlab.com/vpayno/pluralsight-skills-workspace-guided-text-based-adventure-game-in-rust/-/pipelines)
+
 ## Repo Introduction
 
 Instead of using the web lab I'm working on this locally with Vim.
