@@ -39,8 +39,13 @@ impl GameState {
         player: &mut Player,
         mob_index: &mut usize,
     ) {
-        //println!("{} has died!", curr_mob.name);
-        //println!("\nYou gained {} exp!", curr_mob.exp);
+        player.exp += curr_mob.exp;
+        player.level_up();
+        *mob_index += 1;
+        *self = GameState::AwaitingInput;
+
+        println!("{} has died!", curr_mob.name);
+        println!("\nYou gained {} exp!", curr_mob.exp);
     }
 
     pub fn proceed_room(
