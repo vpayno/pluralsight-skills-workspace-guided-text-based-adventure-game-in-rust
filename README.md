@@ -44,7 +44,7 @@ This is normal as these warnings are just referencing the later modules you have
 4. Step `game_state.rs`
 
     1. [x] Task `player_victor()`
-    2. [ ] Task `proceed_room()`
+    2. [x] Task `proceed_room()`
 
 ### Step 1: Implementing the Player
 

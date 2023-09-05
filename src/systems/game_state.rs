@@ -54,6 +54,10 @@ impl GameState {
         mob_index: &mut usize,
         player: &mut Player,
     ) {
+        *room_number += 1;
+        player.rests += 1;
+        *mob_index = 0;
+        *self = GameState::AwaitingInput;
     }
 }
 
