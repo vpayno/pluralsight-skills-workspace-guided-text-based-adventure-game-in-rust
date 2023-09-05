@@ -36,10 +36,10 @@ This is normal as these warnings are just referencing the later modules you have
 
 3. Step `dungeon.rs`
 
-    1. [ ] Task `generate_starter_room()`
-    2. [ ] Task `generate_intermediate_room()`
-    3. [ ] Task `generate_hard_room()`
-    4. [ ] Task `generate_boss_room()`
+    1. [x] Task `generate_starter_room()`
+    2. [x] Task `generate_intermediate_room()`
+    3. [x] Task `generate_hard_room()`
+    4. [x] Task `generate_boss_room()`
 
 4. Step `game_state.rs`
 
