@@ -21,14 +21,30 @@ cache:  # Setup a cache to cache job parts between jobs to ensure faster builds
     - $HOME/.cargo/
     - target/
 
-tests:
+tests-and-coverage:
   stage: test
   image: rust
   allow_failure: true
   script:
     - rustc --version && cargo --version
+    - apt update
+    - apt install -y lcov
+    - cargo install cargo-llvm-cov
+    - cargo llvm-cov clean --workspace
     - cargo build
     - cargo test --verbose
+    - cargo llvm-cov --no-clean
+    - cargo llvm-cov report --cobertura --output-path cobertura-coverage.xml
+    - cargo llvm-cov report --lcov --output-path lcov.info
+    - lcov --list lcov.info
+    - lcov --summary lcov.info
+  artifacts:
+    name: ${CI_JOB_NAME}-${CI_COMMIT_REF_NAME}-${CI_COMMIT_SHA}
+    expire_in: 2 weeks
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: cobertura-coverage.xml
 
 build:amd64:
   stage: build

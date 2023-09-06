@@ -7,6 +7,7 @@ Pluralsight Skills Workspace Guided Text-based Adventure Game in Rust
 [![rust](https://github.com/vpayno/pluralsight-skills-workspace-guided-text-based-adventure-game-in-rust/actions/workflows/rust.yml/badge.svg?branch=main)](https://github.com/vpayno/pluralsight-skills-workspace-guided-text-based-adventure-game-in-rust/actions/workflows/rust.yml)
 
 [![gitlab pipline](https://gitlab.com/vpayno/pluralsight-skills-workspace-guided-text-based-adventure-game-in-rust/badges/main/pipeline.svg)](https://gitlab.com/vpayno/pluralsight-skills-workspace-guided-text-based-adventure-game-in-rust/-/pipelines)
+[![coverage report](https://gitlab.com/vpayno/pluralsight-skills-workspace-guided-text-based-adventure-game-in-rust/badges/main/coverage.svg)](https://gitlab.com/vpayno/pluralsight-skills-workspace-guided-text-based-adventure-game-in-rust/-/commits/main)
 
 ## Repo Introduction
 
