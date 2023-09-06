@@ -59,6 +59,14 @@ lint-code:
     - rustup component add clippy
     - cargo clippy --future-incompat-report -- -D warnings
 
+audit-code:
+  stage: test
+  image: rust
+  allow_failure: true
+  script:
+    - cargo install cargo-audit
+    - cargo audit
+
 build:amd64:
   stage: build
   image: rust
