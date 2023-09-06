@@ -18,3 +18,4 @@ Cargo.lock
 
 # Added for rust workflow
 lcov.info
+coverage.xml
