@@ -28,8 +28,8 @@ tests-and-coverage:
   script:
     - rustc --version && cargo --version
     - apt update
-    - apt install -y lcov
-    - cargo install cargo-llvm-cov
+    - apt install -y lcov --install-suggests
+    - cargo install --locked cargo-llvm-cov
     - cargo llvm-cov clean --workspace
     - cargo build
     - cargo test --verbose
@@ -74,6 +74,16 @@ format-code:
   script:
     - rustup component add rustfmt
     - cargo fmt -- --check
+
+spellcheck:
+  stage: test
+  image: rust
+  allow_failure: true
+  script:
+    - apt update
+    - apt install -y llvm clang clang libclang-dev build-essential libssl-dev
+    - LIBCLANG_PATH="$(llvm-config --prefix)/lib" cargo install --locked cargo-spellcheck
+    - cargo spellcheck check
 
 build:amd64:
   stage: build
