@@ -51,6 +51,14 @@ tests-and-coverage:
         coverage_format: cobertura
         path: coverage.xml
 
+lint-code:
+  stage: test
+  image: rust
+  allow_failure: true
+  script:
+    - rustup component add clippy
+    - cargo clippy --future-incompat-report -- -D warnings
+
 build:amd64:
   stage: build
   image: rust
