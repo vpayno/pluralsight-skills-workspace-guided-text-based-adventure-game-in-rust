@@ -67,6 +67,14 @@ audit-code:
     - cargo install cargo-audit
     - cargo audit
 
+format-code:
+  stage: test
+  image: rust
+  allow_failure: true
+  script:
+    - rustup component add rustfmt
+    - cargo fmt -- --check
+
 build:amd64:
   stage: build
   image: rust
