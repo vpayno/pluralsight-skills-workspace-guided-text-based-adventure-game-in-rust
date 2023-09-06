@@ -28,7 +28,7 @@ tests-and-coverage:
   script:
     - rustc --version && cargo --version
     - apt update
-    - apt install -y lcov --install-suggests
+    - apt install -y lcov  # --install-suggests
     - cargo install --locked cargo-llvm-cov
     - cargo llvm-cov clean --workspace
     - cargo build
