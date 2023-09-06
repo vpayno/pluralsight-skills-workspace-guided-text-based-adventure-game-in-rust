@@ -85,6 +85,14 @@ spellcheck:
     - LIBCLANG_PATH="$(llvm-config --prefix)/lib" cargo install --locked cargo-spellcheck
     - cargo spellcheck check
 
+outdated:
+  stage: test
+  image: rust
+  allow_failure: true
+  script:
+    - cargo install --locked cargo-outdated
+    - cargo outdated
+
 build:amd64:
   stage: build
   image: rust
