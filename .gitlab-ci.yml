@@ -64,7 +64,7 @@ audit-code:
   image: rust
   allow_failure: true
   script:
-    - cargo install cargo-audit
+    - cargo install --locked cargo-audit
     - cargo audit
 
 format-code:
